@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wilderness Life — Lapland Nature Adventures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ag:#4ecb8d;--at:#38b4c8;--av:#8b7fd4;--iw:#f7fbfc;--ad:#0d1f2d;--tm:#3a5068;--tl:#6b8fa8;--ac:#4ecb8d;--wm:#e8a44a;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--iw);color:var(--ad);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;width:100%;height:100%;object-fit:cover;}
+
+    .aurora-bg{position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;background:linear-gradient(170deg,#e8f6f0 0%,#d4eef8 30%,#e8f0fb 60%,#f0f4e8 100%);}
+    .aurora-bg::before{content:'';position:absolute;top:-40%;left:-20%;width:140%;height:120%;background:conic-gradient(from 200deg at 60% 40%,transparent 0deg,rgba(78,203,141,.18) 40deg,rgba(56,180,200,.22) 80deg,rgba(139,127,212,.12) 120deg,transparent 160deg);animation:aRot 18s ease-in-out infinite alternate;border-radius:50%;}
+    @keyframes aRot{0%{transform:rotate(0) scale(1);}100%{transform:rotate(15deg) scale(1.1);}}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;transition:all .4s;}
+    nav.sc{background:rgba(247,251,252,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(78,203,141,.15);padding:.9rem 3.5rem;box-shadow:0 2px 20px rgba(13,31,45,.06);}
+    .nl{display:flex;flex-direction:column;line-height:1;}
+    .nl-m{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;color:var(--ad);}
+    .nl-s{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-top:2px;}
+    .nc{display:flex;gap:2.5rem;list-style:none;}
+    .nc a{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);transition:color .2s;}
+    .nc a:hover{color:var(--ac);}
+    .nr{display:flex;align-items:center;gap:1rem;}
+    .ls{display:flex;gap:4px;}
+    .lb{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:20px;border:1px solid transparent;color:var(--tl);cursor:pointer;background:none;font-family:'DM Sans',sans-serif;transition:all .2s;}
+    .lb.active{border-color:var(--ac);color:var(--ac);background:rgba(78,203,141,.08);}
+    .nc-cta{padding:.55rem 1.4rem;background:var(--ac);color:white;border-radius:50px;font-size:.72rem;letter-spacing:.08em;font-weight:500;transition:all .25s;box-shadow:0 4px 15px rgba(78,203,141,.3);}
+    .nc-cta:hover{transform:translateY(-1px);}
+
+    .hero{min-height:100vh;display:flex;align-items:center;padding:7rem 3.5rem 5rem;position:relative;overflow:hidden;}
+    .hc{flex:1;max-width:560px;z-index:2;}
+    .ht{display:inline-flex;align-items:center;gap:8px;background:rgba(78,203,141,.12);border:1px solid rgba(78,203,141,.25);border-radius:50px;padding:6px 14px;margin-bottom:2rem;}
+    .ht-d{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+    .ht span{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);font-weight:500;}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:400;line-height:1.08;margin-bottom:1.5rem;}
+    .hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--ag),var(--at));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hd{font-size:1.05rem;color:var(--tm);line-height:1.7;margin-bottom:2.5rem;max-width:460px;}
+    .hbs{display:flex;gap:1rem;flex-wrap:wrap;}
+    .bp{padding:.85rem 2rem;background:var(--ad);color:white;border-radius:50px;font-size:.78rem;font-weight:500;transition:all .25s;box-shadow:0 4px 20px rgba(13,31,45,.2);}
+    .bp:hover{transform:translateY(-2px);}
+    .bo{padding:.85rem 2rem;border:1.5px solid rgba(13,31,45,.2);border-radius:50px;font-size:.78rem;font-weight:500;color:var(--ad);transition:all .25s;}
+    .bo:hover{border-color:var(--ac);color:var(--ac);}
+    .hs{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(13,31,45,.08);}
+    .sv{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:500;line-height:1;}
+    .sl{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tl);margin-top:4px;}
+    .hv{position:absolute;right:-2%;top:50%;transform:translateY(-50%);width:50%;max-width:680px;z-index:1;}
+    .hf{position:relative;border-radius:24px 24px 120px 24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 80px rgba(13,31,45,.18);}
+    .ao{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(78,203,141,.15) 0%,transparent 40%,rgba(56,180,200,.1) 100%);mix-blend-mode:screen;}
+    .hb1{position:absolute;bottom:2rem;left:-3rem;background:white;border-radius:16px;padding:1rem 1.4rem;box-shadow:0 8px 30px rgba(13,31,45,.12);display:flex;align-items:center;gap:.8rem;}
+    .hb1-i{font-size:1.6rem;}
+    .hb1-v{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;}
+    .hb1-s{font-size:.65rem;color:var(--tl);}
+    .hb2{position:absolute;top:2rem;right:-2rem;background:var(--ad);color:white;border-radius:12px;padding:.8rem 1.2rem;box-shadow:0 8px 30px rgba(13,31,45,.25);}
+    .at2{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ag);}
+    .av2{font-size:1rem;font-weight:500;margin-top:2px;}
+
+    section{padding:6rem 3.5rem;}
+    .sh{text-align:center;margin-bottom:4rem;}
+    .stag{display:inline-block;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);margin-bottom:.8rem;}
+    .sti{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:var(--ad);line-height:1.2;}
+    .sti em{font-style:italic;color:var(--at);}
+
+    .seasons{background:white;}
+    .sg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1100px;margin:0 auto;}
+    .sc2{border-radius:20px;overflow:hidden;position:relative;aspect-ratio:16/10;cursor:pointer;transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+    .sc2:hover{transform:scale(1.02);}
+    .sc2 img{transition:transform .5s;}
+    .sc2:hover img{transform:scale(1.05);}
+    .so{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,45,.75) 0%,transparent 60%);}
+    .sct{position:absolute;bottom:0;left:0;right:0;padding:2rem;color:white;}
+    .sc-l{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-bottom:.4rem;}
+    .sc-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;}
+    .sc-a{font-size:.75rem;opacity:.75;margin-top:.4rem;}
+
+    .activities{background:var(--iw);}
+    .ag2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;margin-top:3rem;}
+    .ac2{background:white;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(13,31,45,.06);transition:all .3s cubic-bezier(.34,1.2,.64,1);border:1px solid rgba(13,31,45,.04);}
+    .ac2:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(13,31,45,.12);}
+    .ai{aspect-ratio:3/2;overflow:hidden;}
+    .ai img{transition:transform .4s;}
+    .ac2:hover .ai img{transform:scale(1.06);}
+    .ab{padding:1.2rem 1.4rem 1.4rem;}
+    .aico{font-size:1.4rem;margin-bottom:.5rem;}
+    .an{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;margin-bottom:.3rem;}
+    .ade{font-size:.78rem;color:var(--tl);line-height:1.6;}
+    .ase{display:inline-block;margin-top:.8rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
+    .ase.w{background:#e8f0fb;color:var(--av);}
+    .ase.s{background:#e8f6ef;color:var(--ag);}
+    .ase.y{background:#fff3e0;color:var(--wm);}
+
+    .aurs{background:var(--ad);position:relative;overflow:hidden;color:white;}
+    .aurs::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(78,203,141,.2) 0%,transparent 60%),radial-gradient(ellipse at 80% 30%,rgba(56,180,200,.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(139,127,212,.12) 0%,transparent 50%);}
+    .auri{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2;max-width:1100px;margin:0 auto;}
+    .aurt .stag{color:var(--ag);}
+    .aurt .sti{color:white;}
+    .aurd{color:rgba(255,255,255,.7);line-height:1.8;margin-top:1.2rem;font-size:.95rem;}
+    .ams{display:flex;gap:.5rem;margin-top:2rem;flex-wrap:wrap;}
+    .mp{padding:6px 14px;border-radius:20px;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);}
+    .mp.active{background:rgba(78,203,141,.2);border-color:var(--ag);color:var(--ag);}
+    .aurv{position:relative;}
+    .aurimg{border-radius:20px;overflow:hidden;aspect-ratio:4/3;}
+    .aurgl{position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,var(--ag),var(--at),var(--av));z-index:-1;opacity:.4;filter:blur(15px);}
+
+    .accommodations{background:white;}
+    .accg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+    .accc{border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(13,31,45,.06);border:1px solid rgba(13,31,45,.05);transition:all .3s;}
+    .accc:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(13,31,45,.1);}
+    .accimg{aspect-ratio:4/3;overflow:hidden;}
+    .accimg img{transition:transform .4s;}
+    .accc:hover .accimg img{transform:scale(1.05);}
+    .accb{padding:1.5rem;}
+    .acct{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:.5rem;}
+    .accn{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;margin-bottom:.5rem;}
+    .accd{font-size:.78rem;color:var(--tl);line-height:1.6;}
+
+    .about{background:linear-gradient(135deg,#f0faf5 0%,#e8f4f8 100%);}
+    .abin{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1100px;margin:0 auto;}
+    .abim{position:relative;height:500px;}
+    .abim1{position:absolute;top:0;left:0;width:75%;border-radius:20px;overflow:hidden;box-shadow:0 15px 40px rgba(13,31,45,.12);aspect-ratio:4/3;}
+    .abim2{position:absolute;bottom:0;right:0;width:55%;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(13,31,45,.1);aspect-ratio:1/1;border:4px solid white;}
+    .abt .sti{text-align:left;}
+    .abd{color:var(--tm);line-height:1.8;margin-top:1.2rem;font-size:.95rem;}
+    .abna{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(13,31,45,.08);display:flex;align-items:center;gap:1rem;}
+    .abav{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--ag),var(--at));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;color:white;font-weight:500;flex-shrink:0;}
+    .abwh{font-size:.85rem;font-weight:500;}
+    .abfr{font-size:.72rem;color:var(--tl);}
+
+    .contact{background:var(--ad);color:white;text-align:center;position:relative;overflow:hidden;}
+    .contact::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(78,203,141,.1) 0%,transparent 70%);}
+    .ctin{position:relative;z-index:2;max-width:600px;margin:0 auto;}
+    .contact .stag{color:var(--ag);}
+    .contact .sti{color:white;}
+    .ctd{color:rgba(255,255,255,.65);margin-top:1rem;line-height:1.8;font-size:.95rem;}
+    .ctp{display:inline-flex;align-items:center;gap:.7rem;margin-top:2.5rem;font-family:'Playfair Display',serif;font-size:1.5rem;color:white;transition:color .2s;}
+    .ctp:hover{color:var(--ag);}
+    .cte{display:block;margin-top:.6rem;font-size:.85rem;color:rgba(255,255,255,.5);transition:color .2s;}
+    .cte:hover{color:var(--ag);}
+    .ctl{margin-top:2rem;font-size:.78rem;color:rgba(255,255,255,.4);letter-spacing:.08em;}
+    .cts{display:flex;justify-content:center;gap:1rem;margin-top:2rem;}
+    .sl2{padding:.6rem 1.4rem;border:1px solid rgba(255,255,255,.15);border-radius:50px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:all .2s;}
+    .sl2:hover{border-color:var(--ag);color:var(--ag);}
+
+    footer{background:#080f16;padding:1.5rem 3.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.05);}
+    .fl{font-family:'Playfair Display',serif;font-size:.85rem;color:rgba(255,255,255,.4);}
+    .fc{font-size:.65rem;color:rgba(255,255,255,.25);}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+    .d1{transition-delay:.1s;} .d2{transition-delay:.2s;} .d3{transition-delay:.3s;}
+
+    @media(max-width:900px){
+      nav{padding:1.2rem 1.5rem;} nav.sc{padding:.8rem 1.5rem;} .nc{display:none;}
+      .hero{flex-direction:column;padding:7rem 1.5rem 4rem;text-align:center;}
+      .hv{position:relative;right:auto;top:auto;transform:none;width:100%;margin-top:3rem;}
+      .hd,.hbs{margin-left:auto;margin-right:auto;} .hbs{justify-content:center;} .hs{justify-content:center;}
+      .sg,.auri,.abin{grid-template-columns:1fr;}
+      .accg{grid-template-columns:1fr 1fr;} .ag2{grid-template-columns:1fr 1fr;}
+      .abim{height:300px;margin-bottom:2rem;}
+      section{padding:4rem 1.5rem;}
+      footer{flex-direction:column;gap:.5rem;text-align:center;}
+    }
+    @media(max-width:500px){.ag2,.accg{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div class="aurora-bg"></div>
+
+<nav id="nav">
+  <a href="#" class="nl"><span class="nl-m">Wilderness Life</span><span class="nl-s" data-i18n="nav-sub">Lapland Nature Adventures</span></a>
+  <ul class="nc">
+    <li><a href="#activities" data-i18n="nav-act">Activités</a></li>
+    <li><a href="#aurora" data-i18n="nav-aur">Aurores boréales</a></li>
+    <li><a href="#accommodations" data-i18n="nav-acc">Hébergements</a></li>
+    <li><a href="#about" data-i18n="nav-ab">À propos</a></li>
+  </ul>
+  <div class="nr">
+    <div class="ls">
+      <button class="lb active" onclick="setLang('fr')">FR</button>
+      <button class="lb" onclick="setLang('en')">EN</button>
+      <button class="lb" onclick="setLang('de')">DE</button>
+    </div>
+    <a href="#contact" class="nc-cta" data-i18n="nav-cta">Réserver</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hc">
+    <div class="ht"><div class="ht-d"></div><span data-i18n="h-tag">Laponie suédoise · Ouvert toute l'année</span></div>
+    <h1 data-i18n="h-title">La nature<br>à l'état <em>sauvage</em></h1>
+    <p class="hd" data-i18n="h-desc">Vivez des aventures inoubliables au cœur de la Laponie. Huskys, aurores boréales, motoneige et nuits dans la forêt arctique.</p>
+    <div class="hbs">
+      <a href="#activities" class="bp" data-i18n="h-b1">Découvrir les activités</a>
+      <a href="#contact" class="bo" data-i18n="h-b2">Nous contacter</a>
+    </div>
+    <div class="hs">
+      <div><div class="sv">12</div><div class="sl" data-i18n="st1">Huskys</div></div>
+      <div><div class="sv">15+</div><div class="sl" data-i18n="st2">Activités</div></div>
+      <div><div class="sv">4000+</div><div class="sl" data-i18n="st3">Lacs en Laponie</div></div>
+    </div>
+  </div>
+  <div class="hv">
+    <div class="hf">
+      <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&q=85" alt="Husky Laponie"/>
+      <div class="ao"></div>
+    </div>
+    <div class="hb1"><div class="hb1-i">🌌</div><div><div class="hb1-v" data-i18n="b1v">Sep – Avr</div><div class="hb1-s" data-i18n="b1s">Aurores boréales</div></div></div>
+    <div class="hb2"><div class="at2" data-i18n="b2t">Live now</div><div class="av2">🐺 12 Huskys</div></div>
+  </div>
+</section>
+
+<section class="seasons">
+  <div class="sh reveal"><div class="stag" data-i18n="se-tag">Toute l'année</div><h2 class="sti" data-i18n="se-ti">Deux saisons,<br><em>mille aventures</em></h2></div>
+  <div class="sg">
+    <div class="sc2 reveal d1">
+      <img src="https://images.unsplash.com/photo-1551524559-8af4e6624178?w=800&q=80" alt="Hiver Laponie"/>
+      <div class="so"></div>
+      <div class="sct"><div class="sc-l" data-i18n="s1l">Décembre – Avril</div><div class="sc-n" data-i18n="s1n">L'hiver polaire</div><div class="sc-a" data-i18n="s1a">Motoneige · Husky · Aurores · Raquettes · Pêche sur glace</div></div>
+    </div>
+    <div class="sc2 reveal d2">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Été Laponie"/>
+      <div class="so"></div>
+      <div class="sct"><div class="sc-l" data-i18n="s2l">Mai – Octobre</div><div class="sc-n" data-i18n="s2n">L'été arctique</div><div class="sc-a" data-i18n="s2a">Canoë · Quad · Safari élan · Pêche · Randonnée Husky</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="activities" id="activities">
+  <div class="sh reveal"><div class="stag" data-i18n="ac-tag">Ce que nous proposons</div><h2 class="sti" data-i18n="ac-ti">Nos <em>activités</em></h2></div>
+  <div class="ag2">
+    <div class="ac2 reveal"><div class="ai"><img src="https://images.unsplash.com/photo-1548366086-7f1b76106622?w=500&q=80" alt="Husky"/></div><div class="ab"><div class="aico">🐺</div><div class="an" data-i18n="a1n">Husky Trekking</div><div class="ade" data-i18n="a1d">Randonnée avec nos huskys à travers la forêt boréale. Une expérience unique et profondément humaine.</div><span class="ase y" data-i18n="ty">Toute l'année</span></div></div>
+    <div class="ac2 reveal d1"><div class="ai"><img src="https://images.unsplash.com/photo-1551524559-8af4e6624178?w=500&q=80" alt="Motoneige"/></div><div class="ab"><div class="aico">🏂</div><div class="an" data-i18n="a2n">Motoneige</div><div class="ade" data-i18n="a2d">Explorez des paysages immaculés à bord d'une motoneige, entre lacs gelés et forêts enneigées.</div><span class="ase w" data-i18n="tw">Hiver</span></div></div>
+    <div class="ac2 reveal d2"><div class="ai"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=500&q=80" alt="Traîneau"/></div><div class="ab"><div class="aico">🛷</div><div class="an" data-i18n="a3n">Traîneau à huskys</div><div class="ade" data-i18n="a3d">Laissez-vous tirer par notre meute à travers la toundra gelée. Inoubliable.</div><span class="ase w" data-i18n="tw2">Hiver</span></div></div>
+    <div class="ac2 reveal"><div class="ai"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80" alt="Safari élan"/></div><div class="ab"><div class="aico">🫎</div><div class="an" data-i18n="a4n">Safari élan</div><div class="ade" data-i18n="a4d">Partez à la rencontre du roi de la forêt dans son habitat naturel. Guide expérimenté inclus.</div><span class="ase y" data-i18n="ty2">Toute l'année</span></div></div>
+    <div class="ac2 reveal d1"><div class="ai"><img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=500&q=80" alt="Canoë"/></div><div class="ab"><div class="aico">🛶</div><div class="an" data-i18n="a5n">Canoë & Kayak</div><div class="ade" data-i18n="a5d">Pagayez sur des lacs cristallins entourés de forêts. La sérénité absolue de la Laponie estivale.</div><span class="ase s" data-i18n="ts">Été</span></div></div>
+    <div class="ac2 reveal d2"><div class="ai"><img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=500&q=80" alt="Pêche"/></div><div class="ab"><div class="aico">🎣</div><div class="an" data-i18n="a6n">Pêche sur glace</div><div class="ade" data-i18n="a6d">Percez la glace et attendez le silence. La pêche en Laponie est une méditation à ciel ouvert.</div><span class="ase y" data-i18n="ty3">Toute l'année</span></div></div>
+  </div>
+</section>
+
+<section class="aurs" id="aurora">
+  <div class="auri">
+    <div class="aurt reveal">
+      <div class="stag" data-i18n="aur-tag">Phénomène naturel</div>
+      <h2 class="sti" data-i18n="aur-ti">Les <em style="color:var(--ag)">aurores</em><br>boréales</h2>
+      <p class="aurd" data-i18n="aur-d">Entre septembre et avril, le ciel lappon se pare de danses colorées. Vert, violet, turquoise — un spectacle que vous ne verrez nulle part ailleurs.</p>
+      <div class="ams">
+        <span class="mp" data-i18n="m6">Juin</span><span class="mp" data-i18n="m7">Juil</span><span class="mp" data-i18n="m8">Août</span>
+        <span class="mp active" data-i18n="m9">Sep</span><span class="mp active" data-i18n="m10">Oct</span><span class="mp active" data-i18n="m11">Nov</span>
+        <span class="mp active" data-i18n="m12">Déc</span><span class="mp active" data-i18n="m1">Jan</span><span class="mp active" data-i18n="m2">Fév</span>
+        <span class="mp active" data-i18n="m3">Mar</span><span class="mp active" data-i18n="m4">Avr</span><span class="mp" data-i18n="m5">Mai</span>
+      </div>
+    </div>
+    <div class="aurv reveal d1"><div class="aurgl"></div><div class="aurimg"><img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=700&q=85" alt="Aurores boréales"/></div></div>
+  </div>
+</section>
+
+<section class="accommodations" id="accommodations">
+  <div class="sh reveal"><div class="stag" data-i18n="acc-tag">Où dormir</div><h2 class="sti" data-i18n="acc-ti">Nos <em>hébergements</em></h2></div>
+  <div class="accg">
+    <div class="accc reveal"><div class="accimg"><img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=500&q=80" alt="Blockhaus"/></div><div class="accb"><div class="acct" data-i18n="ac1t">Chalet</div><div class="accn" data-i18n="ac1n">Blockhaus au bord du lac</div><div class="accd" data-i18n="ac1d">Un chalet en rondins face au lac, idéal pour observer les aurores depuis votre lit.</div></div></div>
+    <div class="accc reveal d1"><div class="accimg"><img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=500&q=80" alt="Maison Aurora"/></div><div class="accb"><div class="acct" data-i18n="ac2t">Maison</div><div class="accn" data-i18n="ac2n">Maison Aurora</div><div class="accd" data-i18n="ac2d">Maison confortable avec vue imprenable sur le ciel nordique. Parfait pour les familles.</div></div></div>
+    <div class="accc reveal d2"><div class="accimg"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80" alt="Cabanes"/></div><div class="accb"><div class="acct" data-i18n="ac3t">Cabanes sauvages</div><div class="accn" data-i18n="ac3n">Reivo & Dolvor</div><div class="accd" data-i18n="ac3d">Deux cabanes isolées au cœur de la nature. L'expérience Laponie à 100%.</div></div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="abin">
+    <div class="abim reveal">
+      <div class="abim1"><img src="https://images.unsplash.com/photo-1548366086-7f1b76106622?w=600&q=80" alt="Huskys"/></div>
+      <div class="abim2"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80" alt="Manuela et Michael"/></div>
+    </div>
+    <div class="abt reveal d1">
+      <div class="stag" data-i18n="ab-tag">Notre histoire</div>
+      <h2 class="sti" data-i18n="ab-ti">Un rêve suisse<br>au cœur de la <em>Laponie</em></h2>
+      <p class="abd" data-i18n="ab-d1">Nous sommes Manuela et Michael, nés en Suisse, amoureux de nature. En 2021, nous avons tout quitté pour réaliser notre rêve : vivre en Laponie suédoise, entourés de nos 12 huskys.</p>
+      <p class="abd" style="margin-top:1rem" data-i18n="ab-d2">Aujourd'hui, nous partageons cette magie avec vous à travers Wilderness Life — une lodge ouverte toute l'année, un café en été, et des aventures qui vous marqueront à vie.</p>
+      <div class="abna">
+        <div class="abav">M&M</div>
+        <div><div class="abwh">Manuela & Michael Raschle-Steinmann</div><div class="abfr" data-i18n="ab-fr">Suisse → Laponie suédoise depuis 2021</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="ctin">
+    <div class="stag" data-i18n="ct-tag">Prêt à vivre l'aventure ?</div>
+    <h2 class="sti" data-i18n="ct-ti">Parlons de votre<br><em style="color:var(--ag)">séjour</em></h2>
+    <p class="ctd" data-i18n="ct-d">Que ce soit pour quelques jours ou une semaine complète, nous créons votre expérience sur mesure.</p>
+    <a href="tel:+46739140911" class="ctp">📞 +46 73 914 09 11</a>
+    <a href="mailto:info@wildernesslife.se" class="cte">info@wildernesslife.se</a>
+    <p class="ctl" data-i18n="ct-l">📍 Laponie suédoise · Pajala, Sweden</p>
+    <div class="cts">
+      <a href="https://www.facebook.com/share/1BMzhCwT8v/" target="_blank" class="sl2">Facebook</a>
+      <a href="https://www.instagram.com/wildernesslife_lappland_sweden" target="_blank" class="sl2">Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fl">Wilderness Life · Lapland</span>
+  <span class="fc">© 2025 Wilderness Life · Manuela & Michael Raschle-Steinmann</span>
+</footer>
+
+<script>
+const T={
+  fr:{'nav-sub':'Lapland Nature Adventures','nav-act':'Activités','nav-aur':'Aurores boréales','nav-acc':'Hébergements','nav-ab':'À propos','nav-cta':'Réserver','h-tag':'Laponie suédoise · Ouvert toute l\'année','h-title':'La nature<br>à l\'état <em>sauvage</em>','h-desc':'Vivez des aventures inoubliables au cœur de la Laponie. Huskys, aurores boréales, motoneige et nuits dans la forêt arctique.','h-b1':'Découvrir les activités','h-b2':'Nous contacter','st1':'Huskys','st2':'Activités','st3':'Lacs en Laponie','b1v':'Sep – Avr','b1s':'Aurores boréales','b2t':'Live now','se-tag':'Toute l\'année','se-ti':'Deux saisons,<br><em>mille aventures</em>','s1l':'Décembre – Avril','s1n':'L\'hiver polaire','s1a':'Motoneige · Husky · Aurores · Raquettes · Pêche sur glace','s2l':'Mai – Octobre','s2n':'L\'été arctique','s2a':'Canoë · Quad · Safari élan · Pêche · Randonnée Husky','ac-tag':'Ce que nous proposons','ac-ti':'Nos <em>activités</em>','a1n':'Husky Trekking','a1d':'Randonnée avec nos huskys à travers la forêt boréale. Une expérience unique et profondément humaine.','a2n':'Motoneige','a2d':'Explorez des paysages immaculés à bord d\'une motoneige, entre lacs gelés et forêts enneigées.','a3n':'Traîneau à huskys','a3d':'Laissez-vous tirer par notre meute à travers la toundra gelée. Inoubliable.','a4n':'Safari élan','a4d':'Partez à la rencontre du roi de la forêt dans son habitat naturel. Guide expérimenté inclus.','a5n':'Canoë & Kayak','a5d':'Pagayez sur des lacs cristallins entourés de forêts. La sérénité absolue de la Laponie estivale.','a6n':'Pêche sur glace','a6d':'Percez la glace et attendez le silence. La pêche en Laponie est une méditation à ciel ouvert.','ty':'Toute l\'année','tw':'Hiver','tw2':'Hiver','ty2':'Toute l\'année','ts':'Été','ty3':'Toute l\'année','aur-tag':'Phénomène naturel','aur-ti':'Les <em style="color:var(--ag)">aurores</em><br>boréales','aur-d':'Entre septembre et avril, le ciel lappon se pare de danses colorées. Vert, violet, turquoise — un spectacle que vous ne verrez nulle part ailleurs.','m6':'Juin','m7':'Juil','m8':'Août','m9':'Sep','m10':'Oct','m11':'Nov','m12':'Déc','m1':'Jan','m2':'Fév','m3':'Mar','m4':'Avr','m5':'Mai','acc-tag':'Où dormir','acc-ti':'Nos <em>hébergements</em>','ac1t':'Chalet','ac1n':'Blockhaus au bord du lac','ac1d':'Un chalet en rondins face au lac, idéal pour observer les aurores depuis votre lit.','ac2t':'Maison','ac2n':'Maison Aurora','ac2d':'Maison confortable avec vue imprenable sur le ciel nordique. Parfait pour les familles.','ac3t':'Cabanes sauvages','ac3n':'Reivo & Dolvor','ac3d':'Deux cabanes isolées au cœur de la nature. L\'expérience Laponie à 100%.','ab-tag':'Notre histoire','ab-ti':'Un rêve suisse<br>au cœur de la <em>Laponie</em>','ab-d1':'Nous sommes Manuela et Michael, nés en Suisse, amoureux de nature. En 2021, nous avons tout quitté pour réaliser notre rêve : vivre en Laponie suédoise, entourés de nos 12 huskys.','ab-d2':'Aujourd\'hui, nous partageons cette magie avec vous à travers Wilderness Life — une lodge ouverte toute l\'année, un café en été, et des aventures qui vous marqueront à vie.','ab-fr':'Suisse → Laponie suédoise depuis 2021','ct-tag':'Prêt à vivre l\'aventure ?','ct-ti':'Parlons de votre<br><em style="color:var(--ag)">séjour</em>','ct-d':'Que ce soit pour quelques jours ou une semaine complète, nous créons votre expérience sur mesure.','ct-l':'📍 Laponie suédoise · Pajala, Sweden'},
+  en:{'nav-sub':'Lapland Nature Adventures','nav-act':'Activities','nav-aur':'Northern Lights','nav-acc':'Accommodation','nav-ab':'About','nav-cta':'Book now','h-tag':'Swedish Lapland · Open year-round','h-title':'Nature in its<br><em>wildest</em> form','h-desc':'Experience unforgettable adventures in the heart of Lapland. Huskies, northern lights, snowmobiles and nights in the arctic forest.','h-b1':'Explore activities','h-b2':'Contact us','st1':'Huskies','st2':'Activities','st3':'Lakes in Lapland','b1v':'Sep – Apr','b1s':'Northern Lights','b2t':'Live now','se-tag':'Year-round','se-ti':'Two seasons,<br><em>endless adventures</em>','s1l':'December – April','s1n':'The polar winter','s1a':'Snowmobile · Husky · Northern Lights · Snowshoe · Ice fishing','s2l':'May – October','s2n':'The arctic summer','s2a':'Canoe · Quad · Moose safari · Fishing · Husky trekking','ac-tag':'What we offer','ac-ti':'Our <em>activities</em>','a1n':'Husky Trekking','a1d':'Trek through the boreal forest with our huskies. A unique and deeply human experience.','a2n':'Snowmobile','a2d':'Explore pristine landscapes on a snowmobile, between frozen lakes and snowy forests.','a3n':'Husky sled ride','a3d':'Let our pack pull you across the frozen tundra. Unforgettable.','a4n':'Moose safari','a4d':'Meet the king of the forest in its natural habitat. Experienced guide included.','a5n':'Canoe & Kayak','a5d':'Paddle across crystal-clear lakes surrounded by forests. Absolute serenity of arctic summer.','a6n':'Ice fishing','a6d':'Break the ice and wait in silence. Fishing in Lapland is an open-air meditation.','ty':'Year-round','tw':'Winter','tw2':'Winter','ty2':'Year-round','ts':'Summer','ty3':'Year-round','aur-tag':'Natural phenomenon','aur-ti':'The <em style="color:var(--ag)">Northern</em><br>Lights','aur-d':'From September to April, the Lapland sky dances with colours. Green, purple, turquoise — a spectacle you will find nowhere else.','m6':'Jun','m7':'Jul','m8':'Aug','m9':'Sep','m10':'Oct','m11':'Nov','m12':'Dec','m1':'Jan','m2':'Feb','m3':'Mar','m4':'Apr','m5':'May','acc-tag':'Where to sleep','acc-ti':'Our <em>accommodation</em>','ac1t':'Cabin','ac1n':'Log cabin by the lake','ac1d':'A log cabin overlooking the lake, perfect for watching the northern lights from your bed.','ac2t':'House','ac2n':'Aurora House','ac2d':'Comfortable house with stunning views of the nordic sky. Perfect for families or groups.','ac3t':'Wilderness cabins','ac3n':'Reivo & Dolvor','ac3d':'Two isolated cabins in the heart of nature. The full Lapland experience.','ab-tag':'Our story','ab-ti':'A Swiss dream<br>in the heart of <em>Lapland</em>','ab-d1':'We are Manuela and Michael, born in Switzerland, nature lovers. In 2021, we left everything behind to live our dream: life in Swedish Lapland, surrounded by our 12 huskies.','ab-d2':'Today, we share this magic with you through Wilderness Life — a lodge open year-round, a summer café, and adventures that will stay with you forever.','ab-fr':'Switzerland → Swedish Lapland since 2021','ct-tag':'Ready for adventure?','ct-ti':'Let\'s talk about<br>your <em style="color:var(--ag)">stay</em>','ct-d':'Whether a few days or a full week, we create your tailor-made experience.','ct-l':'📍 Swedish Lapland · Pajala, Sweden'},
+  de:{'nav-sub':'Lapland Nature Adventures','nav-act':'Aktivitäten','nav-aur':'Nordlichter','nav-acc':'Unterkünfte','nav-ab':'Über uns','nav-cta':'Buchen','h-tag':'Schwedisch Lappland · Ganzjährig geöffnet','h-title':'Natur in ihrer<br><em>wildsten</em> Form','h-desc':'Erleben Sie unvergessliche Abenteuer im Herzen Lapplands. Huskys, Nordlichter, Schneemobile und Nächte im arktischen Wald.','h-b1':'Aktivitäten entdecken','h-b2':'Kontakt','st1':'Huskys','st2':'Aktivitäten','st3':'Seen in Lappland','b1v':'Sep – Apr','b1s':'Nordlichter','b2t':'Live now','se-tag':'Das ganze Jahr','se-ti':'Zwei Jahreszeiten,<br><em>endlose Abenteuer</em>','s1l':'Dezember – April','s1n':'Der Polarwinter','s1a':'Schneemobil · Husky · Nordlichter · Schneeschuh · Eisfischen','s2l':'Mai – Oktober','s2n':'Der arktische Sommer','s2a':'Kanu · Quad · Elchsafari · Angeln · Husky-Trekking','ac-tag':'Was wir anbieten','ac-ti':'Unsere <em>Aktivitäten</em>','a1n':'Husky-Trekking','a1d':'Wandern Sie mit unseren Huskys durch den borealen Wald. Ein einzigartiges und zutiefst menschliches Erlebnis.','a2n':'Schneemobil','a2d':'Entdecken Sie unberührte Landschaften auf einem Schneemobil zwischen gefrorenen Seen und verschneiten Wäldern.','a3n':'Schlittenhundefahrt','a3d':'Lassen Sie sich von unserem Rudel durch die gefrorene Tundra ziehen. Unvergesslich.','a4n':'Elch-Safari','a4d':'Begegnen Sie dem König des Waldes in seinem natürlichen Lebensraum. Erfahrener Guide inklusive.','a5n':'Kanu & Kajak','a5d':'Paddeln Sie auf kristallklaren Seen umgeben von Wäldern. Absolute Gelassenheit des arktischen Sommers.','a6n':'Eisfischen','a6d':'Brechen Sie das Eis und warten Sie in der Stille. Angeln in Lappland ist eine Meditation unter freiem Himmel.','ty':'Ganzjährig','tw':'Winter','tw2':'Winter','ty2':'Ganzjährig','ts':'Sommer','ty3':'Ganzjährig','aur-tag':'Naturphänomen','aur-ti':'Die <em style="color:var(--ag)">Nordlichter</em>','aur-d':'Von September bis April tanzt der lappländische Himmel in Farben. Grün, Violett, Türkis — ein Schauspiel, das Sie nirgendwo sonst sehen werden.','m6':'Jun','m7':'Jul','m8':'Aug','m9':'Sep','m10':'Okt','m11':'Nov','m12':'Dez','m1':'Jan','m2':'Feb','m3':'Mär','m4':'Apr','m5':'Mai','acc-tag':'Wo schlafen','acc-ti':'Unsere <em>Unterkünfte</em>','ac1t':'Blockhaus','ac1n':'Blockhaus am See','ac1d':'Ein Blockhaus am See, ideal um die Nordlichter vom Bett aus zu beobachten.','ac2t':'Haus','ac2n':'Haus Aurora','ac2d':'Komfortables Haus mit atemberaubendem Blick auf den nordischen Himmel. Perfekt für Familien.','ac3t':'Wildnishütten','ac3n':'Reivo & Dolvor','ac3d':'Zwei abgelegene Hütten im Herzen der Natur. Das Lappland-Erlebnis zu 100%.','ab-tag':'Unsere Geschichte','ab-ti':'Ein Schweizer Traum<br>im Herzen <em>Lapplands</em>','ab-d1':'Wir sind Manuela und Michael, in der Schweiz geboren, Naturliebhaber. 2021 haben wir alles aufgegeben um unseren Traum zu leben: Leben in Schwedisch Lappland.','ab-d2':'Heute teilen wir diese Magie mit Ihnen durch Wilderness Life — eine ganzjährig geöffnete Lodge und Abenteuer, die Sie ein Leben lang begleiten.','ab-fr':'Schweiz → Schwedisch Lappland seit 2021','ct-tag':'Bereit für das Abenteuer?','ct-ti':'Sprechen wir über<br>Ihren <em style="color:var(--ag)">Aufenthalt</em>','ct-d':'Ob für ein paar Tage oder eine ganze Woche — wir gestalten Ihr maßgeschneidertes Erlebnis.','ct-l':'📍 Schwedisch Lappland · Pajala, Schweden'}
+};
+function setLang(l){
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=T[l][el.dataset.i18n];if(v!==undefined)el.innerHTML=v;});
+}
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>60));
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
